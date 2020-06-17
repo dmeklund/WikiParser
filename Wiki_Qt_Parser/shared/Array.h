@@ -892,7 +892,7 @@ void CHArray<theType,intType>::Histogram(theType start, theType end, intType num
 	{
 		if(arr[i]>end || arr[i]<start) continue;	//point out of bounds
 		bin=(intType)( (arr[i]-start) * invStep);
-		result.arr[bin] + =1;						//Adding (resType)1
+		result.arr[bin] += 1;						//Adding (resType)1
 	}
 
 }

@@ -23,11 +23,7 @@
 #ifndef WIKI_QT_PARSER_H
 #define WIKI_QT_PARSER_H
 
-#include <QtWidgets/QMainWindow>
-#include <QFileDialog>
-#include <QTimer>
 #include "Timer.h"
-#include "ui_wiki_qt_parser.h"
 
 #include "WpSavable.h"
 
@@ -36,17 +32,16 @@
 #include <boost/iostreams/filtering_streambuf.hpp>
 #include <boost/iostreams/operations.hpp>
 #include <boost/iostreams/filter/bzip2.hpp>
+#include <boost/dll.hpp>
 
 #include "ThreadedParser.h"
 #include "ThreadedWriter.h"
 #include <sstream>
 
-class Wiki_Qt_Parser : public QMainWindow
+class Wiki_Qt_Parser
 {
-	Q_OBJECT
-
 public:
-	Wiki_Qt_Parser(QWidget *parent = 0);
+	Wiki_Qt_Parser();
 	~Wiki_Qt_Parser();
 
 public:
@@ -72,7 +67,6 @@ private:
 
 private:
 	//"Devices" used during the parse
-	QTimer* timer;
 	ThreadedParser parser;
 	ThreadedWriter writer;
 	std::ostringstream parserReport;
@@ -100,39 +94,14 @@ private:
 	//Auxilliary vars for parser stat output
 	int numDotsInProg;
 
-private:
-	QString diskSpaceText;
-	QString testDiskSpaceText;
 
-private slots:
-	void BnSelectInputClicked();
-	void BnSelectOutputDirClicked();
-	void BnStartClicked();
-	void OnTimer();
-	void SetDiskSpaceText();
-	void SkipImageCaptionsClicked();
-	void AboutMenuItemClicked();
-	void HowToUseMenuItemClicked();
-	void LicenseMenuItemClicked();
-	void GoToFolderClicked();
-	void EnsureNonemptyOtherCores();
-	
 private:
-	void SetNumCoreTexts();
-	void OnTimerParserRunning();
-	void OnTimerWriterRunning();
+	void BnStartClicked();
+
+private:
 	void OnTimerFinalize();
 	void ProcessPageIndex(PageIndex& index);
 
-private:
-	//Load and save all savable data from the dialog
-	void Load();
-	void Save();
-	void ShowInputFile();
-	void ShowOutputDir();
-
-private:
-	Ui::Wiki_Qt_ParserClass ui;
 };
 
 #endif // WIKI_QT_PARSER_H
