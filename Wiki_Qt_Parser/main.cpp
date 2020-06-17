@@ -21,14 +21,11 @@
 */
 
 #include "wiki_qt_parser.h"
-#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
 
 	Wiki_Qt_Parser w;
-	w.show();
 
-	return a.exec();
+	return 0;
 }

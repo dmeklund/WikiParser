@@ -24,6 +24,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <stdio.h>
+#include <cstring>
 #include "CommonUtility.h"
 
 using namespace pugi;

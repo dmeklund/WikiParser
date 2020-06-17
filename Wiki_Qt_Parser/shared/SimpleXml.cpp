@@ -21,9 +21,9 @@
 */
 
 #include "SimpleXml.h"
-#include "Tidy.h"
+#include <tidy/tidy.h>
 #include <functional>
-#include <buffio.h>
+#include <tidy/buffio.h>
 #include <stdio.h>
 #include <errno.h>
 #include <stdio.h>
