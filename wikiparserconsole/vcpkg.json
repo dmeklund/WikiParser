@@ -1,0 +1,9 @@
+{
+  "name": "wikiparserconsole",
+  "version": "1.0",
+  "dependencies": [
+    "pugixml",
+    "re2",
+    "tidy-html5"
+  ]
+}

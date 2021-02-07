@@ -1,0 +1,10 @@
+{
+  "name": "wikiparser",
+  "version": "1.0",
+  "dependencies": [
+    "boost",
+    "pugixml",
+    "re2",
+    "tidy-html5"
+  ]
+}

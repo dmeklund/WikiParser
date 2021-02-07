@@ -6,7 +6,7 @@
 #include "ImageInfo.h"
 
 using namespace SimpleXml;
-using namespace pugi;
+//using namespace pugi;
 using namespace DizzyUtility;
 
 ThreadedIndexer::ThreadedIndexer(PageIndex& thePageIndex, WordIndex& theWordIndex, ImageIndex& theImageIndex,

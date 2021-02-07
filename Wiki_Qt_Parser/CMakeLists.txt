@@ -5,7 +5,11 @@ project(WikiParser LANGUAGES CXX)
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-find_package(Boost 1.40 COMPONENTS iostreams filesystem thread REQUIRED)
+find_package(Boost 1.75 COMPONENTS iostreams filesystem thread REQUIRED)
+find_package(pugixml CONFIG REQUIRED)
+find_package(re2 CONFIG REQUIRED)
+#find_package(tidy-html5 CONFIG REQUIRED)
+find_library(TIDY_LIBRARY tidys)
 
 set(SOURCE_FILES
         main.cpp
@@ -38,17 +42,18 @@ set(SOURCE_FILES
         shared/WordTrace.cpp
 )
 set(LIBRARIES
-        re2
+        re2::re2
         pugixml
         ${CMAKE_DL_LIBS}
         ${Boost_LIBRARIES}
         Threads::Threads
-        tidy
+        ${TIDY_LIBRARY}
 )
 include_directories(
         ${PROJECT_SOURCE_DIR}/shared
         ${Boost_INCLUDE_DIR}
 )
 add_executable(wiki_qt_parser ${SOURCE_FILES})
-target_link_libraries(wiki_qt_parser ${LIBRARIES})
+target_link_libraries(wiki_qt_parser PRIVATE ${LIBRARIES})
+
 set_property(TARGET wiki_qt_parser PROPERTY CXX_STANDARD 17)
